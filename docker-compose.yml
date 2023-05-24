@@ -4,7 +4,20 @@ services:
     image: alpine
     command: ash -c "apk update && apk upgrade && apk add busybox-extras && tail -f /dev/null"
     container_name: alice
+    networks:
+      HOME_NET:
+        ipv4_address: 10.0.0.2
   bob:
     image: alpine
     command: ash -c "apk update && apk upgrade && apk add busybox-extras && tail -f /dev/null"
     container_name: bob
+    networks:
+      HOME_NET:
+        ipv4_address: 10.0.0.3
+
+networks:
+  HOME_NET:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/24
