@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  alice:
+    image: alpine
+    command: ash -c "apk update && apk upgrade && apk add busybox-extras && tail -f /dev/null"
+    container_name: alice
+  bob:
+    image: alpine
+    command: ash -c "apk update && apk upgrade && apk add busybox-extras && tail -f /dev/null"
+    container_name: bob
